@@ -65,11 +65,12 @@ class GameTree:
                 for y in range(BOARD_SIZE):
                     child_board = game_engine.get_new_board(
                         parent_board, x, y, cur_player)
-                    
+
                     if child_board is not None:
                         # print(x, y, "| ", child_board)
-                        # print("----------")       
-                        new_child = GameTree.Node(x, y, cur_player, cur_depth + 1)
+                        # print("----------")
+                        new_child = GameTree.Node(
+                            x, y, cur_player, cur_depth + 1)
 
                         self.recur_create_children(
                             new_child, child_board, cur_player * -1, cur_depth + 1)
@@ -81,7 +82,7 @@ class GameTree:
                     parent_node.children.heapify_max()
                 else:
                     parent_node.children.heapify_min()
-                
+
                 parent_node.score = parent_node.children.arr[0].score
 
     def get_best_move(self):
