@@ -103,8 +103,14 @@ class GameEngine:
 
         return moves_exist
 
-    # return 1 if cur player 1 win, -1 if opp player win, 0 for no one winning
-    def check_win(self, a_board, player):
+    # return None if game is to be continue
+    # return 1 if player 1 (repsented by 1 in array) win, 
+    # return -1 when player 2 (represented by -1 in array) win, 
+    # return 0 when tie
+    def check_win(self, a_board):
+        if self.check_moves_exist(a_board, 1) or self.check_moves_exist(a_board, -1):
+            return None
+
         player1_score, player2_score = 0, 0
         for row in range(BOARD_SIZE):
             for col in range(BOARD_SIZE):
@@ -112,15 +118,10 @@ class GameEngine:
                     player1_score += 1
                 elif a_board[row][col] < 0:
                     player2_score += 1
-        if player1_score > 0 and player2_score > 0:
-            if player1_score + player2_score == 64:
-                if (player > 0 and player1_score > player2_score) or (player < 0 and player2_score > player1_score):
-                    return 1
-                else:                
-                    return -1
-            else:
-                return 0
-        elif (player > 0 and player1_score > 0) or (player < 0 and player2_score > 0):
+        
+        if player1_score > player2_score:
             return 1
-        else:
+        elif player2_score > player1_score:
             return -1
+        else:
+            return 0

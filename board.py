@@ -69,6 +69,10 @@ class Board:
         self.board = new_board
         if self.game_engine.check_moves_exist(self.board, self.cur_player * -1):
             self.cur_player *= -1
-
+            
+    # return None if game is to be continue
+    # return 1 if player 1 (repsented by 1 in array) win, 
+    # return -1 when player 2 (represented by -1 in array) win, 
+    # return 0 when tie
     def check_win(self):
-        return self.game_engine.check_win(self.board, self.cur_player) == 1
+        return self.game_engine.check_win(self.board)

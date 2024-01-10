@@ -1,6 +1,9 @@
 
 import unittest
 from game_tree import GameTree
+from export_csv import ExportCSV
+
+export_csv = ExportCSV('sample_move.csv')
 
 
 class GameTreeTestCase(unittest.TestCase):
@@ -30,7 +33,7 @@ class GameTreeTestCase(unittest.TestCase):
             [0,  0,  0,  0,  0,  0,  0,  0],
             [0,  0,  0,  0,  0,  0,  0,  0]
         ],
-        # one move will lead to losing
+            # one move will lead to losing
             [
             [0,  0,  0,  0,  0,  0,  0,  0],
             [0,  0,  0,  0,  0,  0,  0,  0],
@@ -46,22 +49,28 @@ class GameTreeTestCase(unittest.TestCase):
     # ensure bots will always take an obvious winning move
         tree = GameTree(boards[0], 1)
         (row, col) = tree.get_best_move()
-        print(row, col)
+        #tree.print_target_depth(1)
+        #tree.print_target_depth(2)
         self.assertEqual((row, col), (1, 3))
+
+        
+        
 
         tree = GameTree(boards[1], -1)
         (row, col) = tree.get_best_move()
-        print(row, col)
+        #print(row, col)
         self.assertEqual((row, col), (1, 6))
 
     # ensure bots will always avoid obvious losing moves
         tree = GameTree(boards[2], 1)
         (row, col) = tree.get_best_move()
-        print(row, col)
+        #tree.print_target_depth(1)
+        #tree.print_target_depth(2)
         self.assertNotEqual((row, col), (2, 4))
         self.assertNotEqual((row, col), (6, 4))
 
-        
+        # export_csv.set_arr(boards)
+        # export_csv.export()
 
 
 if __name__ == '__main__':

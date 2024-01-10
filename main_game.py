@@ -52,7 +52,7 @@ while running:
         inner_text = "Computer"
     screen.blit(font.render(inner_text, 1, "black"), (8 * GRID_SIZE + 5, 5))
 
-    if board.check_win():
+    if board.check_win():        
         screen.blit(font.render("Win", 1, "black"), (8 * GRID_SIZE + 5, 50))
         running = False
 
@@ -65,5 +65,5 @@ while running:
     # independent physics.
     dt = clock.tick(60) / 1000
 
-time.sleep(5)
+time.sleep(2)
 pygame.quit()
