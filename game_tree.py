@@ -62,7 +62,7 @@ class GameTree:
             parent_node.score = rule.cal_score(parent_board, parent_player)
             return None
 
-        elif game_engine.check_win(parent_board, parent_player) == 1:
+        elif game_engine.check_win(parent_board) == parent_player:
             score_sign = parent_depth % 2
             if score_sign == 0:
                 score_sign = -1

@@ -31,7 +31,7 @@ class RULE_RANDOM:
         if y == 0 or y == 7:
             score += (1 + self.factor_a)          
         elif y == 1 or y == 6:
-            score -= (10 + self.factor_b)
+            score -= (20 + self.factor_b)
         elif y == 2 or y == 5:
             score += (3 + self.factor_c)
 

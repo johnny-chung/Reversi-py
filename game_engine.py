@@ -80,9 +80,12 @@ class GameEngine:
         if grid_change is not None:
             # if valid, change the corresponding grid
             new_board = deep_copy_2d_array(a_board)
+            # print("org: ", new_board)
             new_board[x][y] = player
+            # print(x, y, new_board)
             for elem in grid_change:
                 new_board[elem[0]][elem[1]] = player
+
             return new_board
         else:
             return None

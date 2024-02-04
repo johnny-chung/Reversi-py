@@ -36,7 +36,7 @@ class Board:
                 # print(player)
                 if player_data != 0:
                     chess_pos = pygame.Vector2(
-                        row * GRID_SIZE + GRID_SIZE // 2, col*GRID_SIZE + GRID_SIZE // 2)
+                        col * GRID_SIZE + GRID_SIZE // 2, row*GRID_SIZE + GRID_SIZE // 2)
                     pygame.draw.circle(
                         self.screen, COLOR[player_data == 1], chess_pos, GRID_SIZE // 2 - 10)
 
@@ -47,8 +47,8 @@ class Board:
         # only response if the click is inside the board
         # TBD: add offset
         if mouse_pos[0] <= BOARD_SIZE * GRID_SIZE and mouse_pos[1] <= BOARD_SIZE * GRID_SIZE:
-            row = mouse_pos[0] // GRID_SIZE
-            col = mouse_pos[1] // GRID_SIZE
+            row = mouse_pos[1] // GRID_SIZE
+            col = mouse_pos[0] // GRID_SIZE
             # check if it is a valid move
             grid_change = self.game_engine.check_move(
                 self.board, row, col, self.cur_player)
